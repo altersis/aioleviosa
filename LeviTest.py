@@ -8,11 +8,6 @@ import asyncio
 import time
 
 import aiohttp
-# from aioleviosa import (
-#     LeviosaShadeGroup as tGroup,
-#     LeviosaZoneHub as tHub,
-#     discover_leviosa_zones as discover_leviosa_zones,
-# )
 import aioleviosa as lev
 import async_timeout
 

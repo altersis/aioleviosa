@@ -27,17 +27,6 @@ class LvsaApiConnectionError(LvsaApiError):
     """Problem connecting to Leviosa hub."""
 
 
-# async def check_response(response, valid_response_codes):
-#     """Check the response for correctness."""
-#     if response.status == 204:
-#         return True
-#     if response.status in valid_response_codes:
-#         _js = await response.json()
-#         return _js
-#     else:
-#         raise LvsaApiResponseStatusError(response.status)
-
-
 async def discover_leviosa_zones() -> dict:
     """Listen for advertisements."""
     source_ip = "0.0.0.0"
