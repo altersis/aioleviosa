@@ -25,7 +25,7 @@ async def Test(loop):
     addresses = list(zones_found.values())
     if len(addresses) > 0:
         print("Testing with: ", addresses[0])
-        hub = lev.LeviosaZoneHub(addresses[0], "MyTestHub", loop, session)
+        hub = lev.LeviosaZoneHub(addresses[0], "FirstHubFound", loop, session)
         print("Hub created")
         await hub.getHubInfo()
         print("GetInfo should be done now")
