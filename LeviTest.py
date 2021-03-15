@@ -1,3 +1,9 @@
+''' Test for the Leviosa Motor Shades base classes
+    
+    The below code will search for Leviosa Zones for 20 seconds, 
+    then will connect to the first Zone found and iterate through
+    all shade Groups, issuing Open/Close/Down/Up/Stop               '''
+
 import asyncio
 import time
 

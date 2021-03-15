@@ -75,9 +75,6 @@ async def discover_leviosa_zones() -> dict:
         _LOGGER.debug("stopped discovery for Leviosa motor shades")
     return ZonesFound
 
-    # self._devices = await find_leviosa_zones()
-
-
 class LeviosaZoneHub:
     """Represents and manages the interaction with a Leviosa Zone Hub"""
 
