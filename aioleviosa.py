@@ -1,4 +1,8 @@
-"""Class containing the async http methods to connect to a Leviosa Shades Zone Hub"""
+"""Classes containing the async http methods to connect to a 
+Leviosa Motor Shades Zone Hub
+
+These classes were built with Home Assistant in mind, but should work well
+for other purposes """
 
 import asyncio
 from ipaddress import IPv4Address
@@ -23,8 +27,17 @@ class LvsaApiConnectionError(LvsaApiError):
     """Problem connecting to Leviosa hub."""
 
 async def discover_leviosa_zones() -> dict:
-    """Listen for advertisements."""
-    source_ip = "0.0.0.0"
+    """Listen for Zone advertisements. Leviosa Zones
+       implement SSDP advertisements (do not respond to 
+       M-SEARCH, no description document), so this custom 
+       discovery process is necessary 
+       20 seconds for discovery is enough, as Zones 
+       advertise very frequently. 
+
+       param: nothing needed 
+       return: dictionary of UDNs and IPs of Zones
+       (last segment of UDN contains Zone MAC address ) """
+    source_ip = "0.0.0.0" # Will bind to all addresses
     _LOGGER.debug("setting up discovery for Leviosa Zone @%s", source_ip)
     source_ip = IPv4Address(source_ip)
     ZonesFound = {}
@@ -66,7 +79,7 @@ class LeviosaZoneHub:
         self.hub_ip = hub_ip
         self.hub_name = hub_name
         self.hub_fw_v = "0.0.0"
-        self._timeout = timeout
+        self.timeout = timeout
         self.groups = []
         self.AddGroup("All groups")
         if loop:
@@ -100,7 +113,7 @@ class LeviosaZoneHub:
         response = None
         try:
             url = "http://" + self.hub_ip + url_frag
-            with async_timeout.timeout(self._timeout, loop=self.loop):
+            with async_timeout.timeout(self.timeout, loop=self.loop):
                 _LOGGER.debug("url: %s", url)
                 response = await self.websession.post(url)
                 _LOGGER.debug("return code is: %d", response.status)
@@ -122,7 +135,7 @@ class LeviosaZoneHub:
         url = "http://" + self.hub_ip + "/" + url_frag
         try:
             _LOGGER.debug("Sending GET request to: %s" % url)
-            with async_timeout.timeout(self._timeout, loop=self.loop):
+            with async_timeout.timeout(self.timeout, loop=self.loop):
                 response = await self.websession.get(url)
             if response.status == 200:
                 data = await response.json(content_type=None)
