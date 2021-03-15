@@ -16,16 +16,11 @@ class LvsaApiError(Exception):
     """General Api error. Means we have a problem communication with
     the Leviosa hub."""
 
-    pass
-
-
 class LvsaApiResponseStatusError(LvsaApiError):
     """Wrong http response error."""
 
-
 class LvsaApiConnectionError(LvsaApiError):
     """Problem connecting to Leviosa hub."""
-
 
 async def discover_leviosa_zones() -> dict:
     """Listen for advertisements."""
@@ -39,9 +34,9 @@ async def discover_leviosa_zones() -> dict:
             data.get("USN", "notfound").find("urn:leviosa:device:wiShadeController:1")
             > 0
         ) and (data.get("_udn", "notfound") not in ZonesFound.keys()):
-            ip = data.get("_address", "NOADDR")
-            if ip == "NOADDR":
-                ip = data.get("_host", "0.0.0.0:1900") + ":"
+            ip = data.get("_address", "NOADDR")  # IP of Zone normally comes in _address 
+            if ip == "NOADDR":                   # Some OS' (like Ubuntu) return
+                ip = data.get("_host", "0.0.0.0:1900") + ":" # _host
             ZonesFound[data["_udn"]] = ip[: ip.find(":")]
             _LOGGER.debug(
                 "Found a Leviosa Zone %s @%s", data["_udn"], ZonesFound[data["_udn"]]
