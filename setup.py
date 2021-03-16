@@ -11,21 +11,19 @@ setup(
   download_url = 'https://github.com/altersis/aioleviosa/aioleviosa_01.tar.gz',    # I explain this later on
   keywords = ['AIO', 'AsyncIO', 'Leviosa Zone'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
-          'asyncio',
           'ipaddress',
-          'logging',
-          'typing',
-          'aiohttp',
-          'async_timeout',
-          'async_upnp_client'
+          'aiohttp>=3.7.4',
+          'async_timeout>=3.0',
+          'async_upnp_client>=0.15.0'
       ],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
     'Intended Audience :: Developers',      # Define that your audience are developers
     'Topic :: Software Development :: Build Tools',
-    'License :: OSI Approved :: MIT License',   # Again, pick a license
-    'Programming Language :: Python :: 3',      #Specify which pyhton versions that you want to support
+    'License :: OSI Approved :: Apache Software License',   # Again, pick a license
+    'Programming Language :: Python :: 3.6',      #Specify which pyhton versions that you want to support
     'Programming Language :: Python :: 3.7',
     'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
   ],
 )
