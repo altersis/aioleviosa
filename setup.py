@@ -29,13 +29,3 @@ setup(
     'Programming Language :: Python :: 3.8',
   ],
 )
-
-
-import asyncio
-from ipaddress import IPv4Address
-import logging
-from typing import Any, Mapping, Optional, Sequence, Tuple, Union
-
-import aiohttp
-import async_timeout
-from async_upnp_client.advertisement 
