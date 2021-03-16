@@ -8,3 +8,5 @@
  **2. LeviosaZoneHub**. Instantiate this class to represent one Leviosa Zone, and then Add the Blind Group names to it using **AddGroup(GroupName)** This method will return a reference to an instance of a LeviosaShadeGroup. 
 
  **3. LeviosaShadeGroup**. There are methods to Open, Close and Stop the shades, as well as a methods to move to the next predefined step up or down. Do not instantiate this class, instead use AddGroup() from the LeviosaZoneHub class
+
+ *See the included test file for more details on usage.*
