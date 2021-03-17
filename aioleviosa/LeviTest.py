@@ -9,7 +9,6 @@ import time
 
 import aiohttp
 import aioleviosa as lev
-import async_timeout
 
 
 async def Test(loop):
