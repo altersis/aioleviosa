@@ -8,7 +8,7 @@ setup(
   author = 'Gerardo Castillo',
   author_email = 'gcastillo@integrahome.net',
   url = 'https://github.com/altersis/aioleviosa',   
-  download_url = 'https://github.com/altersis/aioleviosa/aioleviosa_01.tar.gz',
+  download_url = 'https://github.com/altersis/aioleviosa/archive/refs/tags/0.2.0.tar.gz',
   keywords = ['Communication', 'AsyncIO', 'Leviosa Zone'],   
   install_requires=[
           'aiohttp>=3.7.4',
