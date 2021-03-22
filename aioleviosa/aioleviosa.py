@@ -7,7 +7,7 @@ for other purposes """
 import asyncio
 from ipaddress import IPv4Address
 import logging
-from typing import Any, Mapping, Optional, Sequence, Tuple, Union
+from typing import Any, Mapping
 
 import aiohttp
 import async_timeout
@@ -37,9 +37,7 @@ async def discover_leviosa_zones() -> dict:
        param: nothing needed 
        return: dictionary of UDNs and IPs of Zones
        (last segment of UDN contains Zone MAC address ) """
-    source_ip = "0.0.0.0" # Will bind to all addresses
-    _LOGGER.debug("setting up discovery for Leviosa Zone @%s", source_ip)
-    source_ip = IPv4Address(source_ip)
+    _LOGGER.debug("setting up discovery for Leviosa Zone @0.0.0.0")
     ZonesFound = {}
 
     async def on_notify(data: Mapping[str, Any]) -> None:
@@ -57,7 +55,7 @@ async def discover_leviosa_zones() -> dict:
 
     listener = UpnpAdvertisementListener(
         on_alive=on_notify,
-        source_ip=source_ip,
+        source_ip=None, # This will bind to all addresses on the host
     )
     _LOGGER.debug("starting listener for Leviosa motor shades")
     await listener.async_start()
@@ -81,7 +79,6 @@ class LeviosaZoneHub:
         self.hub_fw_v = "0.0.0"
         self.timeout = timeout
         self.groups = []
-        self.AddGroup("All groups")
         if loop:
             self.loop = loop
         else:

@@ -24,6 +24,7 @@ async def Test(loop):
         await hub.getHubInfo()
         print("GetInfo should be done now")
         print("version:", hub.fwVer)
+        hub.AddGroup("All groups") # Group 0 means all groups in the Zone hub
         hub.AddGroup("Group ONE")
         hub.AddGroup("Group TWO")
         hub.AddGroup("Group THREE")
@@ -33,6 +34,7 @@ async def Test(loop):
         BG_num = len(hub.groups)
         print("Number of Blind Groups: ", BG_num)
         for BlindGroup in hub.groups:
+            print("\n")
             print(BlindGroup.name)
             print("Opening")
             await BlindGroup.open()
@@ -48,7 +50,6 @@ async def Test(loop):
             print("Next down position")
             await BlindGroup.down()
             time.sleep(5)
-            print("\n")
     else:
         print("No Zones found, nothing to test")
     print("End of run")
