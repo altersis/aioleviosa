@@ -8,12 +8,12 @@ setup(
   author = 'Gerardo Castillo',
   author_email = 'gcastillo@integrahome.net',
   url = 'https://github.com/altersis/aioleviosa',   
-  download_url = 'https://github.com/altersis/aioleviosa/archive/refs/tags/0.2.0.tar.gz',
+  download_url = 'https://github.com/altersis/aioleviosa/archive/refs/tags/0.3.0.tar.gz',
   keywords = ['Communication', 'AsyncIO', 'Leviosa Zone'],   
   install_requires=[
           'aiohttp>=3.7.4',
           'async_timeout>=3.0',
-          'async_upnp_client>=0.22.5' # This package is also used by HASS for SSDP
+          'async_upnp_client==0.22.5' # This package is also used by HASS for SSDP
       ],
   classifiers=[
     'Development Status :: 5 - Production/Stable',   # "3 - Alpha", "4 - Beta" or "5 - Production/Stable" 
