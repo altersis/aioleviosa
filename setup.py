@@ -16,7 +16,7 @@ setup(
           'async_upnp_client>=0.22.5' # This package is also used by HASS for SSDP
       ],
   classifiers=[
-    'Development Status :: 4 - Beta',   # "3 - Alpha", "4 - Beta" or "5 - Production/Stable" 
+    'Development Status :: 5 - Production/Stable',   # "3 - Alpha", "4 - Beta" or "5 - Production/Stable" 
     'Intended Audience :: Developers',
     'Topic :: Software Development :: Build Tools',
     'License :: OSI Approved :: Apache Software License',
