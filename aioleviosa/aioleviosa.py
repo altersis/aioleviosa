@@ -11,7 +11,7 @@ from typing import Any, Mapping
 
 import aiohttp
 import async_timeout
-from async_upnp_client.advertisement import UpnpAdvertisementListener
+from async_upnp_client.advertisement import SsdpAdvertisementListener
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -53,14 +53,14 @@ async def discover_leviosa_zones() -> dict:
                 "Found a Leviosa Zone %s @%s", data["_udn"], ZonesFound[data["_udn"]]
             )
 
-    listener = UpnpAdvertisementListener(
+    listener = SsdpAdvertisementListener(
         on_alive=on_notify,
         source_ip=None, # This will bind to all addresses on the host
     )
     _LOGGER.debug("starting listener for Leviosa motor shades")
     await listener.async_start()
     try:
-        _LOGGER.debug("Letting Zones dicovery run for 20 secs")
+        _LOGGER.debug("Letting Zones discovery run for 20 secs")
         await asyncio.sleep(20)
     except:
         _LOGGER.debug("exception: ")
