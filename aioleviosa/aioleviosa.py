@@ -86,7 +86,7 @@ class LeviosaZoneHub:
         if websession:
             self.websession = websession
         else:
-            self.websession = aiohttp.ClientSession(loop=self.loop)
+            self.websession = aiohttp.ClientSession()
 
     @property
     def fwVer(self):
@@ -110,7 +110,7 @@ class LeviosaZoneHub:
         response = None
         try:
             url = "http://" + self.hub_ip + url_frag
-            with async_timeout.timeout(self.timeout, loop=self.loop):
+            with async_timeout.timeout(self.timeout):
                 _LOGGER.debug("url: %s", url)
                 response = await self.websession.post(url)
                 _LOGGER.debug("return code is: %d", response.status)
@@ -132,7 +132,7 @@ class LeviosaZoneHub:
         url = "http://" + self.hub_ip + "/" + url_frag
         try:
             _LOGGER.debug("Sending GET request to: %s" % url)
-            with async_timeout.timeout(self.timeout, loop=self.loop):
+            with async_timeout.timeout(self.timeout):
                 response = await self.websession.get(url)
             if response.status == 200:
                 data = await response.json(content_type=None)
