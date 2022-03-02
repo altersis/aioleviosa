@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'aioleviosa',         # This package talks to a Leviosa Zone hub
   packages = ['aioleviosa'],   
-  version = '0.3.3',           # Removed the need for 'ipaddress'
+  version = '0.3.4',           # Removed the need for 'ipaddress'
   license='APACHE 2.0',        # https://help.github.com/articles/licensing-a-repository
   description = 'AsyncIO compatible library to talk to a Leviosa Motor Shades Zone',   
   author = 'Gerardo Castillo',
