@@ -55,7 +55,7 @@ async def discover_leviosa_zones() -> dict:
 
     listener = SsdpAdvertisementListener(
         on_alive=on_notify,
-        source_ip=None, # This will bind to all addresses on the host
+        source=None, # This will bind to all addresses on the host
     )
     _LOGGER.debug("starting listener for Leviosa motor shades")
     await listener.async_start()

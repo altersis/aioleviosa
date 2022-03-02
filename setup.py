@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'aioleviosa',         # This package talks to a Leviosa Zone hub
   packages = ['aioleviosa'],   
-  version = '0.3.2',           # Removed the need for 'ipaddress'
+  version = '0.3.3',           # Removed the need for 'ipaddress'
   license='APACHE 2.0',        # https://help.github.com/articles/licensing-a-repository
   description = 'AsyncIO compatible library to talk to a Leviosa Motor Shades Zone',   
   author = 'Gerardo Castillo',
@@ -13,7 +13,7 @@ setup(
   install_requires=[
           'aiohttp>=3.7.4',
           'async_timeout>=3.0',
-          'async_upnp_client>=0.22.5' # This package is also used by HASS for SSDP
+          'async_upnp_client>=0.25.0' # This package is also used by HASS for SSDP
       ],
   classifiers=[
     'Development Status :: 5 - Production/Stable',   # "3 - Alpha", "4 - Beta" or "5 - Production/Stable" 
