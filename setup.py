@@ -13,7 +13,7 @@ setup(
   install_requires=[
           'aiohttp>=3.7.4',
           'async_timeout>=3.0',
-          'async_upnp_client>=0.25.0' # This package is also used by HASS for SSDP
+          'async_upnp_client>=0.22.11' # This package is also used by HASS for SSDP
       ],
   classifiers=[
     'Development Status :: 5 - Production/Stable',   # "3 - Alpha", "4 - Beta" or "5 - Production/Stable" 
